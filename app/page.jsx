@@ -4,20 +4,25 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {useState} from "react";
 import axios from 'axios';
+import MarkdownRenderer from "@/components/MarkdownRenderer";
 
 export default function Home() {
     const [textInput, setTextInput] = useState('');
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false); // Ajout de l'état de chargement
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
+        setLoading(true);
         try {
             const response = await axios.post('/api/convert-date', { text: textInput });
             setMessage(response.data.message);
         } catch (err) {
             setError('Error processing the message');
+        } finally {
+            setLoading(false)
         }
     };
 
@@ -34,12 +39,14 @@ export default function Home() {
                     placeholder="Ask something..."
                 />
             </div>
-            <Button type="submit">Send</Button>
+            <Button type="submit"> {loading ? ('Generated...') : ('Send')}</Button>
         </form>
-        {message && (
-            <p className='text-fuchsia-900 w-full max-w-lg'>{message}</p>
+        {loading ? (
+            <p className="text-gray-400 w-full max-w-lg">Generated...</p>
+        ) : (
+            <MarkdownRenderer message={message} />
         )}
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <p className="text-red-500 w-full max-w-lg">{error}</p>}
     </main>
   );
 }
