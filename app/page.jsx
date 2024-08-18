@@ -27,7 +27,7 @@ export default function Home() {
     };
 
   return (
-    <main className="flex min-h-screen flex-col items-center gap-10 py-16 m-4">
+    <main className="flex min-h-screen flex-col items-center gap-10 py-16 mx-4">
         <h1 className="text-2xl font-bold">IA du gheto</h1>
         <form onSubmit={handleSubmit} className="w-full flex flex-row gap-3 max-w-lg">
             <div className="w-full">
