@@ -11,6 +11,10 @@ export async function POST(request) {
                 model: 'gpt-4o-mini',
                 messages: [
                     {
+                        role: 'system',
+                        content: 'Répond moi toujours avec un language familier',
+                    },
+                    {
                         role: 'user',
                         content: text,
                     },

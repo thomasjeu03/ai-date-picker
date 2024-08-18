@@ -41,12 +41,12 @@ export default function Home() {
             </div>
             <Button type="submit"> {loading ? ('Generated...') : ('Send')}</Button>
         </form>
+        {error && <p className="text-red-500 w-full max-w-lg">{error}</p>}
         {loading ? (
             <p className="text-gray-400 w-full max-w-lg">Generated...</p>
         ) : (
             <MarkdownRenderer message={message} />
         )}
-        {error && <p className="text-red-500 w-full max-w-lg">{error}</p>}
     </main>
   );
 }
