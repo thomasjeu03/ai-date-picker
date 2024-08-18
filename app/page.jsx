@@ -22,7 +22,7 @@ export default function Home() {
     };
 
   return (
-    <main className="flex min-h-screen flex-col items-center gap-10 p-8 justify-center">
+    <main className="flex min-h-screen flex-col items-center gap-10 p-8 m-10">
         <h1 className="text-2xl font-bold">IA du gheto</h1>
         <form onSubmit={handleSubmit} className="w-full flex flex-row gap-3 max-w-lg">
             <div className="w-full">
@@ -37,7 +37,7 @@ export default function Home() {
             <Button type="submit">Send</Button>
         </form>
         {message && (
-            <p className='text-fuchsia-900 w-full'>{message}</p>
+            <p className='text-fuchsia-900 w-full max-w-lg'>{message}</p>
         )}
         {error && <p className="text-red-500">{error}</p>}
     </main>
