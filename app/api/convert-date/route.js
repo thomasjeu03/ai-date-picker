@@ -15,7 +15,7 @@ export async function POST(request) {
                         content: text,
                     },
                 ],
-                max_tokens: 10,
+                max_tokens: 250,
             },
             {
                 headers: {
